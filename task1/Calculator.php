@@ -10,24 +10,10 @@ class Calculator
 	{
 		$this->Total=0;
 		if(isset($argv[0])){
-		$argv=explode(",",$argv[0]);
 			foreach($argv as $key) {
 				if($key>0) {//same instruction cost if we add 0
 					$this->Total+=$key;
 				}
-			}
-		}
-		return $this->Total;
-	}
-	public function multiplication($argv)
-	{
-		$this->Total=1;
-		if(isset($argv[0])){
-		$argv=explode(",",$argv[0]);
-			foreach($argv as $key) {
-				//if($key>0) {
-					$this->Total*=$key;
-				//}
 			}
 		}
 		return $this->Total;
@@ -39,6 +25,7 @@ if(!empty($argv)) {
 	$calc= new Calculator();
 	if(method_exists($calc, $function))
 	{
+		$argv=explode(",",$argv[0]);
 		echo $calc->$function($argv)."\n";
 	}else{
 		echo "\n"."Oops, Invalid Function name"."\n";
